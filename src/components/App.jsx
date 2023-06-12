@@ -1,5 +1,5 @@
 import Form from './Phonebook/Form';
-import ContactsList from './ContactsList/ContactsList';
+import ContactList from './ContactsList/ContactsList';
 import css from './App.module.css';
 import Filter from './Filter/FilterContact';
 
@@ -10,7 +10,7 @@ export default function App() {
       <Form />
       <h2>Contacts</h2>
       <Filter />
-      <ContactsList />
+      <ContactList />
     </div>
   );
 }

@@ -2,20 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Form.module.css';
 import shortid from 'shortid';
-import { useState } from 'react';
-import { addContact } from 'redux/slice';
+import { useState, useEffect} from 'react';
+// import { addContact } from 'redux/slice';
 import { useDispatch } from 'react-redux';
+import { ContactsAdd, ContactsList } from '../../redux/contacts/contactOperation'
 
 export default function Phonebook() {
-  const [name, setName] = useState(() => {
-    return JSON.parse(localStorage.getItem('name')) ?? '';
-  });
 
-  const [number, setNumber] = useState(() => {
-    return JSON.parse(localStorage.getItem('number')) ?? '';
-  });
+  // const [name, setName] = useState(() => {
+  //   return JSON.parse(localStorage.getItem('name')) ?? '';
+  // });
+
+  // const [number, setNumber] = useState(() => {
+  //   return JSON.parse(localStorage.getItem('number')) ?? '';
+  // });
+
+  const [name, setName] = useState();
+
+  const [number, setNumber] = useState();
 
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(ContactsList());
+  }, [dispatch]);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -35,9 +46,9 @@ export default function Phonebook() {
   };
 
   const handleSubmit = e => {
-    const id = shortid.generate();
+    // const id = shortid.generate();
     e.preventDefault();
-    dispatch(addContact({ id: id, name: name, number: number }));
+    dispatch(ContactsAdd({ name: name, number: number }));
     reset();
   };
 

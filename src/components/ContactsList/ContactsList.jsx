@@ -3,20 +3,24 @@ import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { delContact } from 'redux/slice';
+import {
+  ContactsDel,
+  ContactsList,
+} from '../../redux/contacts/contactOperation';
 
 const getContacts = (items, filter) =>
   items.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-const ContactsList = () => {
+const ContactList = () => {
   const items = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.contacts.filter);
   const contacts = getContacts(items, filter);
   const dispatch = useDispatch();
 
-  const ondeleteContact = id => {
-    dispatch(delContact(id));
+  const onDeleteContact = id => {
+    dispatch(ContactsDel(id));
   };
 
   return (
@@ -28,7 +32,7 @@ const ContactsList = () => {
             <span className={css.ContactItemSpan}>{number}</span>
           </p>
           <button
-            onClick={() => ondeleteContact(id)}
+            onClick={() => onDeleteContact(id)}
             className={css.button}
             type="button"
           >
@@ -50,4 +54,4 @@ ContactsList.propTypes = {
   ),
 };
 
-export default ContactsList;
+export default ContactList;
