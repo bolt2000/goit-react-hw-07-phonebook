@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './Form.module.css';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 import { useState, useEffect} from 'react';
 // import { addContact } from 'redux/slice';
 import { useDispatch } from 'react-redux';
@@ -93,6 +93,6 @@ export default function Phonebook() {
   );
 }
 
-Phonebook.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Phonebook.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
