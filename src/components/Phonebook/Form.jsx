@@ -1,13 +1,12 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import css from './Form.module.css';
-// import shortid from 'shortid';
 import { useState, useEffect} from 'react';
 // import { addContact } from 'redux/slice';
 import { useDispatch } from 'react-redux';
 import { ContactsAdd, ContactsList } from '../../redux/contacts/contactOperation'
 
-export default function Phonebook() {
+export default function Form() {
 
   // const [name, setName] = useState(() => {
   //   return JSON.parse(localStorage.getItem('name')) ?? '';
@@ -46,7 +45,6 @@ export default function Phonebook() {
   };
 
   const handleSubmit = e => {
-    // const id = shortid.generate();
     e.preventDefault();
     dispatch(ContactsAdd({ name: name, number: number }));
     reset();
