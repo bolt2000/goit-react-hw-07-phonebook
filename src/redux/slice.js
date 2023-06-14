@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  listContacts,
-  deleteContact,
-  addContact,
-} from './contactAPI';
+import { listContacts, deleteContact, addContact } from './contactAPI';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -19,8 +15,6 @@ const contactsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
-    
-    filter: '',
   },
 
   extraReducers: builder => {
@@ -45,5 +39,4 @@ const contactsSlice = createSlice({
   },
 });
 
-// export const {addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

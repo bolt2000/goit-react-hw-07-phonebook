@@ -2,24 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-// import { delContact } from 'redux/slice';
-// import {
-//   ContactsDel,
-//   ContactsList,
-// } from '../../redux/contacts/contactOperation';
 
 import { deleteContact, listContacts } from '../../redux/contactAPI';
+import { selectFilteredContacts } from 'redux/selectors';
 
-
-const getContacts = (items, filter) =>
-  items.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+// const getContacts = (items, filter) =>
+//   items.filter(contact =>
+//     contact.name.toLowerCase().includes(filter.toLowerCase())
+//   );
 
 const ContactList = () => {
-  const items = useSelector(state => state.contacts.items);
-  const filter = useSelector(state => state.contacts.filter);
-  const contacts = getContacts(items, filter);
+  // const items = useSelector(state => state.contacts.items);
+  // const filter = useSelector(state => state.contacts.filter);
+  // const contacts = selectFilteredContacts(items, filter);
+
+  const contacts = useSelector(selectFilteredContacts);
+
   const dispatch = useDispatch();
 
   const onDeleteContact = id => {

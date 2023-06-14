@@ -1,28 +1,15 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import css from './Form.module.css';
-import { useState, useEffect} from 'react';
-// import { addContact } from 'redux/slice';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { ContactsAdd, ContactsList } from '../../redux/contacts/contactOperation'
-import {addContact, listContacts} from '../../redux/contactAPI';
+import { addContact, listContacts } from '../../redux/contactAPI';
 
 export default function Form() {
-
-  // const [name, setName] = useState(() => {
-  //   return JSON.parse(localStorage.getItem('name')) ?? '';
-  // });
-
-  // const [number, setNumber] = useState(() => {
-  //   return JSON.parse(localStorage.getItem('number')) ?? '';
-  // });
-
   const [name, setName] = useState();
 
   const [number, setNumber] = useState();
 
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(listContacts());
@@ -91,7 +78,3 @@ export default function Form() {
     </form>
   );
 }
-
-// Phonebook.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };

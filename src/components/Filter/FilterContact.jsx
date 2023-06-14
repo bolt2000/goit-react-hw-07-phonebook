@@ -1,12 +1,10 @@
 import css from './FilterContact.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from 'redux/filter';
-import { selectFilter } from 'redux/selectors';
-// import { selectFilter } from 'redux/filter/filter-selector';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const value = useSelector(selectFilter);
+  const value = useSelector(state => state.filter);
 
   const filterContact = evt => {
     dispatch(getFilter(evt.currentTarget.value.trim()));
@@ -27,4 +25,3 @@ const Filter = () => {
 };
 
 export default Filter;
- 
