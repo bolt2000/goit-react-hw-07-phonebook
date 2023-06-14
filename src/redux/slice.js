@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  ContactsList,
-  ContactsDel,
-  ContactsAdd,
-} from './contacts/contactOperation';
-
+  listContacts,
+  deleteContact,
+  addContact,
+} from './contactAPI';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -20,36 +19,31 @@ const contactsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    
     filter: '',
   },
 
   extraReducers: builder => {
     builder
-      .addCase(ContactsList.pending, handlePending)
-      .addCase(ContactsList.rejected, handleRejected)
-      .addCase(ContactsList.fulfilled, (state, { payload }) => {
+      .addCase(listContacts.pending, handlePending)
+      .addCase(listContacts.rejected, handleRejected)
+      .addCase(listContacts.fulfilled, (state, { payload }) => {
         state.items = payload;
       })
 
-      .addCase(ContactsAdd.pending, handlePending)
-      .addCase(ContactsAdd.rejected, handleRejected)
-      .addCase(ContactsAdd.fulfilled, (state, { payload }) => {
+      .addCase(addContact.pending, handlePending)
+      .addCase(addContact.rejected, handleRejected)
+      .addCase(addContact.fulfilled, (state, { payload }) => {
         state.items = [payload, ...state.items];
       })
 
-      .addCase(ContactsDel.pending, handlePending)
-      .addCase(ContactsDel.rejected, handleRejected)
-      .addCase(ContactsDel.fulfilled, (state, { payload }) => {
+      .addCase(deleteContact.pending, handlePending)
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(deleteContact.fulfilled, (state, { payload }) => {
         state.items = state.items.filter(item => item.id !== payload.id);
       });
   },
-
-  changeFilter(state, { payload }) {
-    state.filter = payload;
-  },
 });
 
-   
-
-export const { addContactAction, delContactAction, changeFilter } = contactsSlice.actions;
+// export const {addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

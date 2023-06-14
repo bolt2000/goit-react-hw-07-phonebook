@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 // import { delContact } from 'redux/slice';
-import {
-  ContactsDel,
-  ContactsList,
-} from '../../redux/contacts/contactOperation';
+// import {
+//   ContactsDel,
+//   ContactsList,
+// } from '../../redux/contacts/contactOperation';
+
+import { deleteContact, listContacts } from '../../redux/contactAPI';
+
 
 const getContacts = (items, filter) =>
   items.filter(contact =>
@@ -20,7 +23,7 @@ const ContactList = () => {
   const dispatch = useDispatch();
 
   const onDeleteContact = id => {
-    dispatch(ContactsDel(id));
+    dispatch(deleteContact(id));
   };
 
   return (
@@ -44,7 +47,7 @@ const ContactList = () => {
   );
 };
 
-ContactsList.propTypes = {
+listContacts.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.exact({
       name: PropTypes.string.isRequired,

@@ -4,7 +4,8 @@ import css from './Form.module.css';
 import { useState, useEffect} from 'react';
 // import { addContact } from 'redux/slice';
 import { useDispatch } from 'react-redux';
-import { ContactsAdd, ContactsList } from '../../redux/contacts/contactOperation'
+// import { ContactsAdd, ContactsList } from '../../redux/contacts/contactOperation'
+import {addContact, listContacts} from '../../redux/contactAPI';
 
 export default function Form() {
 
@@ -24,7 +25,7 @@ export default function Form() {
 
 
   useEffect(() => {
-    dispatch(ContactsList());
+    dispatch(listContacts());
   }, [dispatch]);
 
   const handleChange = e => {
@@ -46,7 +47,7 @@ export default function Form() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(ContactsAdd({ name: name, number: number }));
+    dispatch(addContact({ name: name, number: number }));
     reset();
   };
 
